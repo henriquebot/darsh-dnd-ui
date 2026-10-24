@@ -5,7 +5,7 @@
  * - 1 – 0 : cases de l'onglet Personnalisé, avant les macros du cœur (`executeMacro`, DEFERRED, :654) ;
  *   une case vide laisse passer la macro ;
  * - T : épingle l'infobulle de la case survolée ; sinon le ciblage du cœur (`target`, :411) ;
- * - F : jeu d'armes suivant, sauf pendant une règle ou un glisser de token (`rulerWaypoint`, :647).
+ * - F : jeu d'armes suivant (Maj+F : précédent, §52), sauf pendant une règle ou un glisser de token (`rulerWaypoint`, :647).
  * Jamais Échap ni Entrée (le moteur de combat les écoute pour sa visée). Aucune touche pour Fin du tour
  * (décision de l'utilisateur, SPEC §11).
  */
@@ -52,6 +52,26 @@ export function registerKeys(getBar) {
       if ( canvas.ready && (canvas.controls?.ruler?.active || canvas.tokens?._draggedToken) ) return false;
       return !!getBar()?.swapWeapons();
     }
+  });
+
+  // §52 : le jeu d'armes précédent (F : le suivant), Maj+F par défaut.
+  game.keybindings.register(MODULE_ID, "prevWeapons", {
+    name: "DDU.Keys.PrevWeapons",
+    hint: "DDU.Keys.PrevWeaponsHint",
+    editable: [{ key: "KeyF", modifiers: [foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.SHIFT] }],
+    precedence: PRIORITY,
+    onDown: () => {
+      if ( canvas.ready && (canvas.controls?.ruler?.active || canvas.tokens?._draggedToken) ) return false;
+      return !!getBar()?.cycleWeapons(-1);
+    }
+  });
+
+  // §51 : replier / déplier la Barre. Aucune touche par défaut, comme les actions de base.
+  game.keybindings.register(MODULE_ID, "toggleBar", {
+    name: "DDU.Keys.ToggleBar",
+    hint: "DDU.Keys.ToggleBarHint",
+    editable: [],
+    onDown: () => !!getBar()?.toggleCollapsed()
   });
 
   for ( const action of BASIC_ACTIONS ) {

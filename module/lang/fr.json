@@ -68,6 +68,8 @@
       },
       "AddRow": "Ajouter une rangée",
       "RemoveRow": "Retirer une rangée",
+      "Collapse": "Masquer la barre d'actions",
+      "Expand": "Afficher la barre d'actions",
       "EndTurn": "Fin du tour",
       "TurnOf": "Tour de {name}",
       "Movement": "Déplacement : {left} / {allowed}",
@@ -108,7 +110,12 @@
       "Climb": "Grimper (escalade) : au mur, au plafond s'il y en a un et que vous le pouvez",
       "ClimbMenu": "Escalade : monter, descendre, se laisser tomber",
       "NonLethalOn": "Coups non létaux : un coup de mêlée qui ferait tomber à 0 PV laisse à 1 PV, Inconscient (cliquer pour couper)",
-      "NonLethalOff": "Coups létaux (cliquer pour des coups non létaux : assommer au lieu de tuer)"
+      "NonLethalOff": "Coups létaux (cliquer pour des coups non létaux : assommer au lieu de tuer)",
+      "TwoHandedOff": "Main secondaire prise par {name} (à deux mains)",
+      "OffHandBlocked": "{name} se manie à deux mains : la main secondaire reste libre.",
+      "PrevWeapons": "Jeu d'armes précédent",
+      "NextWeapons": "Jeu d'armes suivant",
+      "WeaponConfig": "Configurer les jeux d'armes"
     },
     "Reason": {
       "NoUses": "Plus d'utilisation",
@@ -121,8 +128,10 @@
       "CustomSlotHint": "Utilise la case correspondante de l'onglet Personnalisé. Une case vide laisse la touche à la barre de macros.",
       "PinTooltip": "Barre : épingler l'infobulle",
       "PinTooltipHint": "Épingle l'infobulle détaillée de la case survolée (hors de la Barre, la touche garde son rôle : cibler).",
-      "SwapWeapons": "Barre : changer de jeu d'armes",
-      "SwapWeaponsHint": "Passe à l'autre jeu d'armes (pendant une mesure, la touche pose un point de passage).",
+      "SwapWeapons": "Barre : jeu d'armes suivant",
+      "SwapWeaponsHint": "Passe au jeu d'armes suivant (pendant une mesure, la touche pose un point de passage).",
+      "ToggleBar": "Barre : masquer / afficher",
+      "ToggleBarHint": "Masque la barre d'actions (un petit onglet reste pour la rappeler) ou la réaffiche. Les touches chiffrées utilisent toujours les cases Personnalisé pendant qu'elle est masquée.",
       "BasicHint": "Utilise cette action de base du moteur de combat pour le personnage de la Barre.",
       "Basic": {
         "dash": "Action : Foncer",
@@ -133,7 +142,9 @@
         "help": "Action : Aider",
         "ready": "Action : Se tenir prêt",
         "escape": "Action : S'échapper"
-      }
+      },
+      "PrevWeapons": "Barre : jeu d'armes précédent",
+      "PrevWeaponsHint": "Passe au jeu d'armes précédent."
     },
     "D20": {
       "Checks": "Caractéristiques",
@@ -225,8 +236,15 @@
         "Hint": "Les joueurs voient la valeur d'initiative des créatures qu'ils ne possèdent pas."
       },
       "friezeAutoSelect": {
-        "Name": "Frise : sélectionner le combattant actif",
-        "Hint": "À chaque tour, le token dont c'est le tour est sélectionné et la vue recentrée sur lui. Le MJ sélectionne n'importe quel combattant ; un joueur, seulement les siens."
+        "Name": "Frise : sélectionner son combattant actif",
+        "Hint": "À chaque tour d'un de vos combattants, son token est sélectionné et la vue recentrée sur lui. Pour les joueurs : le MJ a son propre réglage (présélection du MJ)."
+      },
+      "friezeAutoSelectGM": {
+        "Name": "Frise : présélection du MJ",
+        "Hint": "Chez le MJ, à chaque tour : sélectionner le token dont c'est le tour et recentrer la vue sur lui — jamais, seulement les PNJ (combattants sans joueur propriétaire), ou tous.",
+        "none": "Aucun",
+        "npc": "PNJ uniquement",
+        "all": "Tous"
       },
       "friezeHideDefeated": {
         "Name": "Frise : retirer les vaincus",
@@ -293,8 +311,11 @@
         "Hint": "Les joueurs ne peuvent plus déplacer, ajouter ni retirer de cases."
       },
       "softPath": {
-        "Name": "Plateau : chemin adouci",
-        "Hint": "Les cases du chemin de déplacement sont des pastilles aux bords fondus au lieu d'aplats de couleur. Mêmes couleurs (vert, jaune, rouge selon la vitesse)."
+        "Name": "Plateau : tracé du chemin",
+        "Hint": "Les cases du chemin de déplacement : aplats de couleur (dnd5e), pastilles aux bords fondus, ou petits ronds d'un tiers de case. Mêmes couleurs (vert, jaune, rouge selon la vitesse).",
+        "flat": "Aplats",
+        "soft": "Pastilles fondues",
+        "dots": "Petits ronds"
       },
       "rulerOutOfCombat": {
         "Name": "Plateau : chemin hors combat",
@@ -307,6 +328,10 @@
       "cameraFollow": {
         "Name": "Plateau : la caméra suit mon token",
         "Hint": "Quand un de vos tokens se déplace, la vue se recentre sur lui en douceur. Pour le MJ : le token qu'il contrôle et déplace lui-même."
+      },
+      "weaponSets": {
+        "Name": "Jeux d'armes",
+        "Hint": "Combien de jeux d'armes cet ordinateur fait défiler (flèches à côté des jeux, touches jeu suivant / précédent). Chaque jeu a une main principale (à gauche) et une main secondaire (à droite)."
       }
     },
     "Theme": {
@@ -447,6 +472,20 @@
     "Climb": {
       "OnWall": "En escalade, à {height} {units} du sol",
       "OnCeiling": "Au plafond, à {height} {units} du sol"
+    },
+    "WeaponSets": {
+      "Title": "Jeux d'armes : {name}",
+      "Count": "Jeux d'armes sur cet ordinateur",
+      "Set": "Jeu",
+      "Main": "Main principale",
+      "Off": "Main secondaire",
+      "Held": "En main",
+      "Hold": "Prendre",
+      "Clear": "Vider",
+      "Hint": "L'emplacement de gauche est la main principale, celui de droite la main secondaire. Le jeu en main est équipé, les autres non. Une arme à deux mains prend les deux mains.",
+      "Locked": "La Barre est verrouillée : les emplacements ne se modifient pas.",
+      "Pool": "Glisser une arme sur un emplacement ; lâcher un emplacement ici le vide.",
+      "None": "Aucune arme, aucun bouclier ni source de lumière."
     }
   }
 }

@@ -4,6 +4,8 @@
  */
 import { MODULE_ID, SCALE_KEYS } from "./shared.mjs";
 import { POLICIES } from "./core/health.mjs";
+import { GM_SELECT_MODES } from "./core/select.mjs";
+import { PATH_STYLES } from "./core/path-style.mjs";
 import { Portrait } from "./apps/portrait.mjs";
 
 const refreshAll = () => Portrait.refreshFor(null, { flash: false });
@@ -92,6 +94,9 @@ export function registerFriezeSettings(redraw) {
   client("friezeRound", true);
   client("friezeInitiativeText", true);
   client("friezeAutoSelect", false, { onChange: undefined });
+  // §48 : le MJ choisit à part — aucun, PNJ seulement, tous (réglage de monde : la fenêtre ne le montre qu'au MJ).
+  world("friezeAutoSelectGM", "none", { type: String, onChange: undefined,
+    choices: Object.fromEntries(GM_SELECT_MODES.map(m => [m, `DDU.Settings.friezeAutoSelectGM.${m}`])) });
   world("friezePrepToPlayers", true);
   world("friezeEnemyInitiative", true);
   world("friezeHideDefeated", false);
@@ -149,7 +154,9 @@ export function registerCanvasSettings(rulers) {
     name: `DDU.Settings.${key}.Name`, hint: `DDU.Settings.${key}.Hint`,
     scope, config: true, type: Boolean, default: def, ...extra
   });
-  reg("softPath", "client", true, { onChange: rulers });
+  // §49 : aplats / pastilles fondues / petits ronds — une case à cocher avant la 0.27.0 (relue par `pathStyleOf`).
+  reg("softPath", "client", "soft", { onChange: rulers, type: String,
+    choices: Object.fromEntries(PATH_STYLES.map(k => [k, `DDU.Settings.softPath.${k}`])) });
   reg("rulerOutOfCombat", "client", false, { onChange: rulers });
   reg("smoothMovement", "world", true);
   reg("cameraFollow", "client", true);
@@ -170,4 +177,13 @@ export function registerBarSettings(redraw, hotbar) {
   reg("barGMHotbar", "world", false, { onChange: hotbar });
   reg("barFullTooltips", "client", false);
   reg("barLockPlayers", "world", false);
+  // §52 : jeux d'armes en rotation sur ce client (flèches et raccourcis), de 2 à 6.
+  game.settings.register(MODULE_ID, "weaponSets", {
+    name: "DDU.Settings.weaponSets.Name", hint: "DDU.Settings.weaponSets.Hint",
+    scope: "client", config: true, type: Number, range: { min: 2, max: 6, step: 1 }, default: 2, onChange: redraw
+  });
+  // §51 : repliée par sa languette (ou le raccourci) — seul l'onglet reste. Réglage client, comme `partyCollapsed`.
+  game.settings.register(MODULE_ID, "barCollapsed", {
+    scope: "client", config: false, type: Boolean, default: false, onChange: redraw
+  });
 }
