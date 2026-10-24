@@ -108,7 +108,9 @@
       "Climb": "Escalar: a parede ou, se possível, o teto",
       "ClimbMenu": "Escalada: subir, descer, soltar-se",
       "NonLethalOn": "Ataques não letais: um golpe corpo a corpo que reduziria uma criatura a 0 PV a deixa com 1 PV, Inconsciente (clique para desativar)",
-      "NonLethalOff": "Ataques letais (clique para ativar ataques não letais: nocautear em vez de matar)"
+      "NonLethalOff": "Ataques letais (clique para ativar ataques não letais: nocautear em vez de matar)",
+      "Collapse": "Ocultar a barra de ações",
+      "Expand": "Mostrar a barra de ações"
     },
     "Reason": {
       "NoUses": "Sem usos restantes",
@@ -133,7 +135,9 @@
         "help": "Ação: Ajudar",
         "ready": "Ação: Preparar",
         "escape": "Ação: Escapar"
-      }
+      },
+      "ToggleBar": "Barra: ocultar / mostrar",
+      "ToggleBarHint": "Oculta a barra de ações (uma pequena aba permanece para trazê-la de volta) ou a mostra novamente. As teclas numéricas continuam usando as células Personalizadas enquanto ela está oculta."
     },
     "D20": {
       "Checks": "Testes de Atributo",
