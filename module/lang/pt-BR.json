@@ -110,7 +110,12 @@
       "NonLethalOn": "Ataques não letais: um golpe corpo a corpo que reduziria uma criatura a 0 PV a deixa com 1 PV, Inconsciente (clique para desativar)",
       "NonLethalOff": "Ataques letais (clique para ativar ataques não letais: nocautear em vez de matar)",
       "Collapse": "Ocultar a barra de ações",
-      "Expand": "Mostrar a barra de ações"
+      "Expand": "Mostrar a barra de ações",
+      "TwoHandedOff": "Mão secundária ocupada por {name} (duas mãos)",
+      "OffHandBlocked": "{name} é uma arma de duas mãos: não é possível usar a mão secundária.",
+      "PrevWeapons": "Conjunto de armas anterior",
+      "NextWeapons": "Próximo conjunto de armas",
+      "WeaponConfig": "Configurar conjuntos de armas"
     },
     "Reason": {
       "NoUses": "Sem usos restantes",
@@ -137,7 +142,9 @@
         "escape": "Ação: Escapar"
       },
       "ToggleBar": "Barra: ocultar / mostrar",
-      "ToggleBarHint": "Oculta a barra de ações, mantendo um pequeno botão para exibi-la novamente. Mesmo com a barra oculta, as teclas numéricas continuam acionando as células da aba Personalizado."
+      "ToggleBarHint": "Oculta a barra de ações, mantendo um pequeno botão para exibi-la novamente. Mesmo com a barra oculta, as teclas numéricas continuam acionando as células da aba Personalizado.",
+      "PrevWeapons": "Barra: conjunto de armas anterior",
+      "PrevWeaponsHint": "Passa para o conjunto de armas anterior."
     },
     "D20": {
       "Checks": "Testes de Atributo",
@@ -321,6 +328,10 @@
       "cameraFollow": {
         "Name": "Tabuleiro: câmera acompanha meu token",
         "Hint": "Quando um dos seus tokens se move, a câmera se centraliza nele suavemente. Para o mestre, isso vale para o token que ele próprio controla e movimenta."
+      },
+      "weaponSets": {
+        "Name": "Conjuntos de armas",
+        "Hint": "Define quantos conjuntos de armas podem ser alternados neste dispositivo (pelas setas ao lado dos conjuntos ou pelos atalhos para o próximo e o anterior). Cada conjunto tem um espaço para a mão principal (à esquerda) e outro para a mão secundária (à direita)."
       }
     },
     "Theme": {
@@ -461,6 +472,20 @@
     "Climb": {
       "OnWall": "Escalando, a {height} {units} do chão",
       "OnCeiling": "No teto, a {height} {units} do chão"
+    },
+    "WeaponSets": {
+      "Title": "Conjuntos de armas: {name}",
+      "Count": "Conjuntos de armas neste computador",
+      "Set": "Conjunto",
+      "Main": "Mão principal",
+      "Off": "Mão secundária",
+      "Held": "Em mãos",
+      "Hold": "Empunhar",
+      "Clear": "Esvaziar",
+      "Hint": "O espaço da esquerda é a mão principal, o da direita a mão secundária. O conjunto em mãos fica equipado, os outros não. Uma arma de duas mãos ocupa as duas mãos.",
+      "Locked": "A Barra está travada: os espaços não podem ser alterados.",
+      "Pool": "Arraste uma arma para um espaço; solte um espaço aqui para esvaziá-lo.",
+      "None": "Nenhuma arma, escudo ou fonte de luz."
     }
   }
 }
