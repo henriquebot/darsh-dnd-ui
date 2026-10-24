@@ -137,7 +137,7 @@
         "escape": "Ação: Escapar"
       },
       "ToggleBar": "Barra: ocultar / mostrar",
-      "ToggleBarHint": "Oculta a barra de ações (uma pequena aba permanece para trazê-la de volta) ou a mostra novamente. As teclas numéricas continuam usando as células Personalizadas enquanto ela está oculta."
+      "ToggleBarHint": "Oculta a barra de ações, mantendo um pequeno botão para exibi-la novamente. Mesmo com a barra oculta, as teclas numéricas continuam acionando as células da aba Personalizado."
     },
     "D20": {
       "Checks": "Testes de Atributo",
